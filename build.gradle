@@ -3,15 +3,17 @@ apply plugin: 'java'
 group = 'me.champeau.sample'
 version = '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 buildscript {
    repositories {
-      jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
    }
    dependencies {
-      classpath 'me.champeau.gradle:jmh-gradle-plugin:0.1'
+      classpath 'gradle.plugin.me.champeau.gradle:jmh-gradle-plugin:0.3.0'
    }
 }
 
@@ -22,6 +24,6 @@ repositories {
 apply plugin: 'me.champeau.gradle.jmh'
 
 jmh {
+    // To run the particular benchmark.
     include = 'org\\.openjdk\\.jmh\\.samples\\.JMHSample_01_HelloWorld.*'
-    humanOutputFile = null
 }
